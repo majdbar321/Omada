@@ -1,0 +1,166 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.chat {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+
+.minimized {
+    height: 60px;
+    overflow: hidden;
+}
+
+.minimize {
+    position: absolute;
+    top: 50px;
+    left: 5px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  
+.messages {
+    height: 100%;
+    overflow-y: auto;
+  }
+.message {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 20px;
+}
+
+
+.message p {
+    background-color: #f1f0f0;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin: 0;
+    border: 1px solid #ccc;
+}
+
+
+.message.system {
+    color: #3c70db;
+}
+
+.message p {
+    background-color: #f1f0f0;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin: 0;
+}
+
+.user-image {
+    width: 30px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius:    50%;
+}
+
+.like-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    margin: 0 4px;
+}
+
+.options-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    margin: 0 4px;
+}
+
+.message-form {
+    display: flex;
+    gap: 10px;
+}
+
+.message-form input {
+    flex-grow: 1;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    padding: 10px 12px;
+    position: relative;
+    top: -15px;
+    left: -12px;
+}
+
+.message-form button {
+    background-color: #1877F2;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    top: -15px;
+    left: -12px;
+}
+
+
+.message-form button:hover {
+    background-color: #1464c4;
+}
+.delete-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    z-index: 1;
+  }
+  
+  .delete-popup p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .delete-popup button {
+    background-color: #1877F2;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+  }
+  
+  .delete-popup button:hover {
+    background-color: #1464c4;
+  }
+  
+
