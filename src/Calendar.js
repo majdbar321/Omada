@@ -113,6 +113,7 @@ function Calendar() {
             <p className="no-events">No events yet.</p>
           )}
         </div>
+        
         <button
           className="add-event-button"
           onClick={() => setShowAddEventPopup(true)}
