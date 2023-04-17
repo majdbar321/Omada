@@ -18,17 +18,7 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.minimize {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    background-color: #ccc;
-    color: #000;
-    border: none;
-    font-size: 1.5rem;
-    padding: 5px;
-    cursor: pointer;
-  }
+
 
 .extensions-list {
     display: flex;
@@ -108,3 +98,14 @@ body {
   .list-item input[type='radio'] {
     margin-right: 10px;
   }
+  .extension-name {
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    margin: 0;
+  }
+  .extension-icon {
+    font-size: 3rem;
+    margin-bottom: 5px;
+  }
+  

@@ -32,8 +32,6 @@
 .container {
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: var(--box-shadow);
-  background-color: var(--secondary-color);
 }
 
 .video-call-container {
@@ -55,8 +53,6 @@
   width: 750px;
   height: 150px;
   border-radius: 5px;
-  box-shadow: var(--box-shadow);
-  
 }
 
 .calendar-container {
@@ -68,12 +64,11 @@
   grid-column: 1 / 3;
   grid-row: 2 / 3;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* changed 100px to 200px */
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   grid-gap: 10px;
   align-items: center;
   justify-content: center;
 }
-
 
 .extensions-container > div {
   display: flex;
@@ -83,147 +78,9 @@
   padding: 5px;
   background-color: var(--secondary-color);
   border-radius: 5px;
-  box-shadow: var(--box-shadow);
 }
 
-.extension-icon {
-  font-size: 3rem;
-  margin-bottom: 5px;
-}
 
-.extension-name {
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: center;
-  margin: 0;
-}
 
-.calendar-heading {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin: 0;
-}
 
-.add-event-button {
-  background-color: var(--primary-color);
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: var(--box-shadow);
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-}
 
-.add-event-button:focus {
-  outline: none;
-}
-
-.add-event-popup {
-  position:fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 10px;
-  }
-  
-  .close-icon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 2rem;
-  color: var(--accent-color);
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  }
-  
-  .event-submit {
-  background-color: var(--primary-color);
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-  }
-  
-  .event-submit:focus {
-  outline: none;
-  }
-  
-  .event-list {
-  margin-top: 20px;
-  width: 100%;
-  overflow-y: auto;
-  }
-  
-  .event {
-  background-color: var(--secondary-color);
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  box-shadow: var(--box-shadow);
-  }
-  
-  .event-title {
-  font-size: 1rem;
-  font-weight: 500;
-  margin: 0;
-  }
-  
-  .no-events {
-  font-size: 1rem;
-  margin: 0;
-  color: var(--accent-color);
-  text-align: center;
-  }
-  
-  .minimize:focus {
-  outline: none;
-  }
-  
-  @media (max-width: 768px) {
-  .App {
-  grid-template-columns: 1fr;
-  grid-template-rows: auto;
-  }
-  
-  .video-call-container,
-  .chat-container,
-  .share-files-container,
-  .calendar-container,
-  .extensions-container {
-  grid-column: 1 / 2;
-  grid-row: auto;
-  width: 100%;
-  margin-bottom: 20px;
-  }
-  
-  .share-files-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  box-shadow: var(--box-shadow);
-  }
-  
-  
-  
-  .add-event-button {
-  font-size: 1rem;
-  padding: 15px 10px;
-  background-color: #0070f3;
-  border: none;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  box-shadow:0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  }

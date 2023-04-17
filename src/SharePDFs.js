@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import './SharePDFs.css';
-import { Document, Page } from 'react-pdf';
+import { MdInsertDriveFile } from 'react-icons/md';
 
 function SharePDFs() {
   const [showUploadPopup, setShowUploadPopup] = useState(false);
@@ -15,21 +15,14 @@ function SharePDFs() {
     accept: 'application/pdf',
     onDrop: (acceptedFiles) => {
       setUploadedPDFs([...uploadedPDFs, ...acceptedFiles]);
+      setSelectedPDF(URL.createObjectURL(acceptedFiles[0]));
+      setShowPDFViewer(true);
     },
   });
-
-  const openPDFViewer = (pdf) => {
-    setSelectedPDF(pdf);
-    setShowPDFViewer(true);
-  };
 
   const closeModal = () => {
     setShowUploadPopup(false);
     setShowPDFViewer(false);
-  };
-
-  const onDocumentLoadSuccess = ({ numPages }) => {
-    setNumPages(numPages);
   };
 
   const changePage = (offset) => {
@@ -44,65 +37,74 @@ function SharePDFs() {
     changePage(1);
   }
 
-  const showPDFViewerButton = (
-    <button onClick={() => setShowPDFViewer(true)}>Show PDF</button>
-  );
-
   return (
     <div className="share-pdfs">
       <button className="minimize">-</button>
-      <button onClick={() => setShowUploadPopup(true)}>Share PDFs</button>
-      {showUploadPopup && (
-        <div className="modal">
-          <div className="modal-content">
-            <button className="close" onClick={closeModal}>
-              &times;
-            </button>
-            <div className="upload-options">
-              <h3>Upload PDF</h3>
-              <div {...getRootProps()} className="dropzone">
-                <input {...getInputProps()} />
-                <p>Drag and drop PDF files here or click to browse</p>
+      <div className="inner-container">
+        <button className="share-pdfs-btn" onClick={() => setShowUploadPopup(true)}>Share PDFs</button>
+        {showUploadPopup && (
+          <div className="modal">
+            <div className="modal-content">
+              <button className="close" onClick={closeModal}>
+                &times;
+              </button>
+              <div className="upload-options">
+                <h3>Upload PDF</h3>
+                <div {...getRootProps()} className="dropzone">
+                  <input {...getInputProps()} />
+                  <p>Drag and drop PDF files here or click to browse</p>
+                </div>
+              </div>
+              <div className="uploaded-pdfs-container">
+                <button className="show-all" onClick={() => setShowPDFViewer(true)}>Show all uploaded PDFs</button>
+                <div className="uploaded-pdfs">
+                  {uploadedPDFs.map((pdf, index) => (
+                    <div key={index} onClick={() => {
+                      setSelectedPDF(URL.createObjectURL(pdf));
+                      setShowPDFViewer(true);
+                    }} className="file">
+                      <MdInsertDriveFile className="file-icon" />
+                      <p className="file-name">{pdf.name}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-      {showPDFViewer && selectedPDF && (
-        <div className="modal">
-          <div className="modal-content">
-            <button className="close" onClick={closeModal}>
-              &times;
-            </button>
-            <div className="pdf-viewer">
-              <div className="pdf-controls">
-                <button onClick={previousPage} disabled={pageNumber <= 1}>Previous</button>
-                <span>{pageNumber} of {numPages}</span>
-                <button onClick={nextPage} disabled={pageNumber >= numPages}>Next</button>
-              </div>
-              <div className="pdf-document">
-                <Document file={selectedPDF} onLoadSuccess={onDocumentLoadSuccess}>
-                  <Page pageNumber={pageNumber} />
-                </Document>
-              </div>
-              <div className="pdf-actions">
-                <a href={URL.createObjectURL(selectedPDF)} download={selectedPDF.name}>
-                  <button>Download PDF</button>
-                </a>
+        )}
+        {showPDFViewer && selectedPDF && (
+          <div className="modal">
+            <div className="modal-content">
+              <button className="close" onClick={closeModal}>
+                &times;
+              </button>
+              <button className="back" onClick={() => setShowPDFViewer(false)}>Back</button>
+              <div className="pdf-viewer">
+                <div className="pdf-controls">
+                  <button onClick={previousPage} disabled={pageNumber <= 1}>Previous</button>
+                  <span>{pageNumber} of {numPages}</span>
+                  <button onClick={nextPage} disabled={pageNumber >= numPages}>Next</button>
+                </div>
+                <div className="pdf-document">
+                    <iframe src={selectedPDF} title="PDF Viewer" width="100%" height="600px" style={{border: "none"}}></iframe>
+                  </div>
+                </div>
               </div>
             </div>
+          )}
+          <div className="uploaded-pdfs">
+            {uploadedPDFs.map((pdf, index) => (
+              <p key={index} onClick={() => {
+                setSelectedPDF(URL.createObjectURL(pdf));
+                setShowPDFViewer(true);
+              }}>
+                <MdInsertDriveFile className="file-icon" /> {pdf.name}
+              </p>
+            ))}
           </div>
         </div>
-      )}
-      <div className="uploaded-pdfs">
-        {uploadedPDFs.map((pdf, index) => (
-          <p key={index} onClick={() => openPDFViewer(pdf)}>
-            {pdf.name}
-          </p>
-        ))}
       </div>
-    </div>
-  );
+    );
 }
 
-export default SharePDFs
+export default SharePDFs;

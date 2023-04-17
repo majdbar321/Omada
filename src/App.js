@@ -14,6 +14,7 @@ import SharingAndPeople from './SharingAndPeople';
 import ManageTeams from './ManageTeams';
 import Subscription from './Subscription';
 import Notification from './Notification';
+import SharePDFs from './SharePDFs'
 
 function App() {
     return (
@@ -35,6 +36,9 @@ function App() {
                     </div>
                     <div className="extensions-container">
                         <Extensions />
+                    </div>
+                    <div >
+                        <SharePDFs />
                     </div>
                     <Routes>
                         <Route path="/profile_settings" element={<ProfileSettings />} />

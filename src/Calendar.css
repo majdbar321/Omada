@@ -9,40 +9,29 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #f8f8f8;
   border: 1px solid #ccc;
   padding: 25px;
   font-family: 'Montserrat', sans-serif;
   border-radius: 5px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  background-image: url('https://img.freepik.com/free-vector/abstract-blur-pink-blue-gradient-background-design_53876-120257.jpg?w=1060&t=st=1681703785~exp=1681704385~hmac=c4236e54d1079a9ef56eea383c4e7f950c170651b0f446b8c8e2d39bf8cde8ce');
+
 }
 
-.minimize {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  background-color: #fff;
-  color: #000;
+
+.add-event-button {
+  background-image: url('https://img.freepik.com/free-vector/abstract-blur-pink-blue-gradient-background-design_53876-120257.jpg?w=1060&t=st=1681703785~exp=1681704385~hmac=c4236e54d1079a9ef56eea383c4e7f950c170651b0f446b8c8e2d39bf8cde8ce');
+  color: #fff;
   border: none;
-  font-size: 1.5rem;
-  padding: 5px;
-  border-radius: 50%;
+  padding: 9px 11px;
+  border-radius: 10px;
   cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
 }
-
-.calendar-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
 .calendar-heading {
   font-size: 1.5rem;
   font-weight: 600;
@@ -51,31 +40,36 @@
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding: 10px;
-  position: sticky;
+  position: absolute;
   top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .event-list {
   width: 100%;
   margin-top: 20px;
   overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .event {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
-  padding: 10px;
-  border-radius: 10px;
-  width: 48%;
-  margin-right: 4%;
+  width: 100px; /* Set a fixed width */
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 5px;
+  margin-right: 4%; /* Add some margin to separate the events */
   margin-bottom: 10px;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--box-shadow);
   cursor: pointer;
   box-sizing: border-box;
-  color: #000; /* default color */
+  color: var(--accent-color); /* Change the default color */
 }
+
 
 .event:last-child {
   margin-right: 0;
@@ -118,5 +112,121 @@
   border-radius: 5px;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
   width: 480px;
-  height: 520px
+  height: 520px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 3fr;
+  grid-gap: 20px;
+  align-items: center;
+  justify-items: center;
 }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.form-label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.form-button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.form-button:focus {
+  outline: none;
+}
+
+
+.close-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  color: var(--accent-color);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.event-submit {
+  background-image: url('https://img.freepik.com/free-vector/abstract-blur-pink-blue-gradient-background-design_53876-120257.jpg?w=1060&t=st=1681703785~exp=1681704385~hmac=c4236e54d1079a9ef56eea383c4e7f950c170651b0f446b8c8e2d39bf8cde8ce');
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  }
+  
+  .event-submit:focus {
+  outline: none;
+  }
+  
+  .event {
+  background-color: var(--secondary-color);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: var(--box-shadow);
+  }
+  
+  .no-events {
+  font-size: 1rem;
+  margin: 0;
+  color: var(--accent-color);
+  text-align: center;
+  }
+  
+  @media (max-width: 768px) {
+  .calendar {
+  padding: 15px;
+  }
+  
+  .event {
+  width: 100%;
+  margin-right: 0;
+  }
+  
+  .event-list {
+  margin-top: 10px;
+  }
+  
+  .add-event-popup {
+  width: 320px;
+  height: 420px;
+  }
+  
+  .calendar-heading {
+  font-size: 1.2rem;
+  }
+  
+  .event-title {
+  font-size: 0.9rem;
+  }
+  
+  .event-location,
+  .event-description,
+  .event-dates {
+  font-size: 0.7rem;
+  }
+  }

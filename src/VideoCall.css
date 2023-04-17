@@ -11,6 +11,8 @@
     padding: 0px;
     border-radius: 10px;
     overflow: hidden;
+    background-image: url('https://img.freepik.com/free-vector/gradient-blur-pink-blue-abstract-background_53876-117324.jpg?w=1060&t=st=1681703715~exp=1681704315~hmac=fd6b7317d415097402bd094558d705e49636ffddf70d9864b13b06844d478d7e');
+    
 }
 .call-title {
     position: absolute;
@@ -25,15 +27,31 @@
   }
   
   
-  
-.start-call-container {
+  .start-call-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100%;
-}
-
-.start-call-container button {
+    background-image: url('https://img.freepik.com/free-vector/gradient-blur-pink-blue-abstract-background_53876-117324.jpg?w=1060&t=st=1681703715~exp=1681704315~hmac=fd6b7317d415097402bd094558d705e49636ffddf70d9864b13b06844d478d7e');
+    background-size:auto;
+    backdrop-filter: blur(50px);
+  }
+  
+  
+  .start-call-container p {
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    font-family: "Helvetica Neue", sans-serif;
+    text-align: center;
+    margin: 15%;
+  }
+  
+  
+  
+  .start-call-container button {
+    margin-top: 1rem;
     background-color: #0077cc;
     color: #fff;
     padding: 10px;
@@ -42,7 +60,8 @@
     font-size: 1.1rem;
     border: none;
     outline: none;
-}
+  }
+  
 
 .top-controls {
     position: absolute;
@@ -57,7 +76,7 @@
     font-size: 1.5rem;
     line-height: 1;
     margin-left: 10px;
-    color: #fff;
+    color: #0e0125;
     cursor: pointer;
 }
 
@@ -65,12 +84,9 @@
     position: absolute;
     top: 5px;
     left: 5px;
-    font-size: 1.5rem;
-    color: #fff;
+    font-size: 1rem;
+    color: #999191;
     background-color: transparent;
-    border: 10;
-    outline: none;
-    cursor: pointer;
 }
 
 .video-container {
@@ -101,6 +117,8 @@
     color: #354aa3;
     font-size: 1.2rem;
     cursor: pointer;
+
+    margin: 1rem;
 }
 
 .video-controls button.disabled {
@@ -138,7 +156,7 @@
 }
 
 .popup-content {
-  background-color: #fff;
+  background-color: transparent;
   border-radius: 0.5rem;
   padding: 2rem;
   display: flex;
@@ -149,15 +167,21 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   position: relative;
 }
+.pop-decsription{
+    font-size: 1.5rem;
+  border-radius: 1rem;
+
+  font-weight: bold;
+}
 
 .popup-content button {
   padding: 1rem 2rem;
   font-size: 1.5rem;
   border-radius: 1rem;
   border: none;
-  background-color: #0095f6;
+  background-image: url('https://img.freepik.com/free-vector/abstract-blur-pink-blue-gradient-background-design_53876-120257.jpg?w=1060&t=st=1681703785~exp=1681704385~hmac=c4236e54d1079a9ef56eea383c4e7f950c170651b0f446b8c8e2d39bf8cde8ce');
   color: #fff;
   cursor: pointer;
-  transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   margin: 1rem
 }

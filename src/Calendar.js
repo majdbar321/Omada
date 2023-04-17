@@ -7,6 +7,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import './App.css';
 
 function Calendar() {
+  const [showEventDetailsPopup, setShowEventDetailsPopup] = useState(false);
   const [showAddEventPopup, setShowAddEventPopup] = useState(false);
   const [editEventPopup, setEditEventPopup] = useState(false);
   const [eventTitle, setEventTitle] = useState('');
@@ -82,8 +83,17 @@ function Calendar() {
     setEventColor(event.color);
     setStartDate(event.start);
     setEndDate(event.end);
-    setEditEventPopup(true);
+    setShowEventDetailsPopup(true);
   };
+  
+  const handleDeleteEvent = () => {
+    const updatedEvents = [...events];
+    updatedEvents.splice(editEventIndex, 1);
+    setEvents(updatedEvents);
+    setEditEventIndex(null);
+    setShowEventDetailsPopup(false);
+  };
+  
 
   return (
     <div className={`calendar ${isMinimized ? 'minimized' : ''}`}>
@@ -103,37 +113,33 @@ function Calendar() {
                   onClick={() => handleEventClick(event, index)}
                 >
                   <p className="event-title">{event.title}</p>
-                  <p className="event-location">{event.location}</p>
-                <p className="event-dates">{`${event.start.format(
-                  'MMM D, YYYY h:mm A'
-                )} - ${event.end.format('MMM D, YYYY h:mm A')}`}</p>
-              </div>
-            ))
-          ) : (
-            <p className="no-events">No events yet.</p>
-          )}
+                </div>
+              ))
+            ) : (
+              <p className="no-events">No events yet.</p>
+            )}
+          </div>
+          <button
+            className="add-event-button"
+            onClick={() => setShowAddEventPopup(true)}
+          >
+            <FiPlusCircle />
+          </button>
         </div>
-        
-        <button
-          className="add-event-button"
-          onClick={() => setShowAddEventPopup(true)}
-        >
-          <FiPlusCircle />
-        </button>
-      </div>
-    )}
-    {showAddEventPopup || editEventPopup ? (
-      <div className="add-event-popup">
-        <button
-          className="close-icon"
-          onClick={() => {
-            setShowAddEventPopup(false);
-            setEditEventPopup(false);
-            setEditEventIndex(null);
-          }}
-        >
-          &times;
-        </button>
+      )}
+  
+      {showAddEventPopup || editEventPopup ? (
+        <div className="add-event-popup">
+          <button
+            className="close-icon"
+            onClick={() => {
+              setShowAddEventPopup(false);
+              setEditEventPopup(false);
+              setEditEventIndex(null);
+            }}
+          >
+            &times;
+          </button>
         <form onSubmit={editEventPopup ? handleEditEvent : handleAddEvent}>
           <label htmlFor="event-title">Event title:</label>
           <input
@@ -207,9 +213,17 @@ function Calendar() {
           </button>
         </form>
       </div>
+    ) : null} {showEventDetailsPopup ? (
+      <div className="event-details-popup">
+        <button className="close-icon" onClick={() => setShowEventDetailsPopup(false)}>&times;</button>
+        <h3>{eventTitle}</h3>
+        <p>{eventLocation}</p>
+        <p>{eventDescription}</p>
+        <button className="delete-button" onClick={handleDeleteEvent}>Delete</button>
+        <button className="edit-button" onClick={() => { setShowEventDetailsPopup(false); setEditEventPopup(true); }}>Edit</button>
+      </div>
     ) : null}
   </div>
-);
-}
+);}
 
 export default Calendar;

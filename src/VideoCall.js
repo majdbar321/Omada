@@ -60,7 +60,10 @@ function VideoCall() {
     <div className="video-call">
       {!isInCall ? (
         <div className="start-call-container">
+          <p>You can request a call with the entire Team with one click, and they will be right with you!</p>
           <button onClick={() => setShowPopup(true)}>Do you want to start a call?</button>
+          <p>And when you will get a call, it will get here, as simple as that!</p>
+
         </div>
       ) : (
         <>
@@ -91,18 +94,27 @@ function VideoCall() {
         </>
       )}
       {showPopup && (
-        <div className="popup">
-          <div className="popup-content-container">
-            <button className="close-popup" onClick={() => setShowPopup(false)}>
-              X
-            </button>
-            <div className="popup-content">
-              <button onClick={startCall}>Start now</button>
-              <button>Schedule a call (not functional)</button>
-</div>
-</div>
-</div>
+  <div className="popup">
+    <div className="popup-content-container">
+      <button className="close-popup" onClick={() => setShowPopup(false)}>
+        X
+      </button>
+      <div className="popup-content">
+        <p className='pop-decsription'>Working togther never been easier!</p>
+        <p className='pop-decsription'>Please select one of the following options:</p>
+        <button onClick={startCall}>Start now</button>
+        <button>Schedule a call</button>
+        <div className="terms-and-conditions">
+          <input type="checkbox" id="terms-agree" />
+          <label htmlFor="terms-agree">
+            I agree to the <a href="/terms-and-conditions">terms and conditions</a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
 )}
+
 </div>
 );
 }

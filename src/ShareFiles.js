@@ -7,12 +7,13 @@ Modal.setAppElement('#root');
 
 function ShareFiles() {
   const [showUploadPopup, setShowUploadPopup] = useState(false);
+  const [showSharedFilesPopup, setShowSharedFilesPopup] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const { getRootProps, getInputProps } = useDropzone({
     accept: 'image/*,video/*,audio/*',
     onDrop: (acceptedFiles) => {
-      setUploadedFiles([...uploadedFiles, ...acceptedFiles]);
+      setUploadedFiles((prevUploadedFiles) => [...prevUploadedFiles, ...acceptedFiles]);
     },
   });
 
@@ -20,10 +21,24 @@ function ShareFiles() {
     // Implement the function to handle uploading from Google Cloud
   };
 
+  const handleShowSharedFiles = () => {
+    setShowSharedFilesPopup(true);
+  };
+
+  const handleDownloadFile = (fileUrl, fileName) => {
+    const link = document.createElement('a');
+    link.href = fileUrl;
+    link.download = fileName;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="share-files">
       <button className="minimize">-</button>
       <button onClick={() => setShowUploadPopup(true)}>Share Files</button>
+      <button onClick={handleShowSharedFiles}>Show Shared Files</button>
       <Modal
         isOpen={showUploadPopup}
         onRequestClose={() => setShowUploadPopup(false)}
@@ -39,10 +54,32 @@ function ShareFiles() {
           </div>
         </div>
       </Modal>
+      <Modal
+        isOpen={showSharedFilesPopup}
+        onRequestClose={() => setShowSharedFilesPopup(false)}
+        className="shared-files-modal"
+        overlayClassName="shared-files-modal-overlay"
+      >
+        <div className="shared-files">
+          <h3>Shared Files</h3>
+          <ul>
+            {uploadedFiles.map((file, index) => (
+              <li key={index}>
+                <div className="file-info">
+                  <span className="file-name">{file.name}</span>
+                  <button
+                    className="download-button"
+                    onClick={() => handleDownloadFile(file.preview, file.name)}
+                  >
+                    Download
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Modal>
       <div className="uploaded-files">
-        {uploadedFiles.map((file, index) => (
-          <p key={index}>{file.name}</p>
-        ))}
       </div>
     </div>
   );

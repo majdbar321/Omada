@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 .chat {
     position: relative;
     width: 100%;
     height: 100%;
-    display: flex;
+    display:flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #f0f0f0;
@@ -13,32 +11,21 @@
     font-family: 'Roboto', sans-serif;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 12px;
-    overflow: hidden;
+    
 }
-
 
 .minimized {
-    height: 60px;
+    height: 50px;
     overflow: hidden;
 }
 
-.minimize {
-    position: absolute;
-    top: 50px;
-    left: 5px;
-    background-color: rgba(0, 0, 0, 0.2);
-    color: #fff;
-    border: none;
-    padding: 5px;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  }
+
   
 .messages {
-    height: 100%;
-    overflow-y: auto;
+    height: 400px; /* set a fixed height */
+    overflow-y: scroll; /* set overflow property to scroll */
   }
+  
 .message {
     display: flex;
     align-items: center;
@@ -48,7 +35,6 @@
     border-radius: 20px;
 }
 
-
 .message p {
     background-color: #f1f0f0;
     padding: 8px 12px;
@@ -57,16 +43,8 @@
     border: 1px solid #ccc;
 }
 
-
 .message.system {
     color: #3c70db;
-}
-
-.message p {
-    background-color: #f1f0f0;
-    padding: 8px 12px;
-    border-radius: 20px;
-    margin: 0;
 }
 
 .user-image {
@@ -110,7 +88,7 @@
 }
 
 .message-form button {
-    background-color: #1877F2;
+    background-image: url('https://img.freepik.com/free-vector/abstract-blur-pink-blue-gradient-background-design_53876-120257.jpg?w=1060&t=st=1681703785~exp=1681704385~hmac=c4236e54d1079a9ef56eea383c4e7f950c170651b0f446b8c8e2d39bf8cde8ce');
     color: #fff;
     border: none;
     padding: 8px 12px;
@@ -124,43 +102,15 @@
     left: -12px;
 }
 
-
 .message-form button:hover {
     background-color: #1464c4;
 }
+
 .delete-popup {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    z-index: 1;
-  }
-  
-  .delete-popup p {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  
-  .delete-popup button {
-    background-color: #1877F2;
-    color: #fff;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-right: 10px;
-  }
-  
-  .delete-popup button:hover {
-    background-color: #1464c4;
-  }
-  
-
+    border: 1px solid #ccc
+}
